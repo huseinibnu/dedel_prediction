@@ -48,25 +48,34 @@ with st.sidebar:
 
 if selected == "Pengenalan":
     back_button_html = """
-            <style>
-                .back-button {
-                    background-color: #62ea39;
-                    text-decoration:None;
-                    padding:8px;
-                    color: #fff;
-                    font-weight: bold;
-                    border-radius: 25px;
-                    border: 2px solid #fff;
-                }
-                .back-button:hover {
-                    background-color: white;
-                    text-decoration: None;
-                    color: #62ea39;
-                    border: 2px solid #62ea39;
-                }
-            </style>
-            <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
-            """
+                <style>
+                    .back-button {
+                        background-color: #62ea39;
+                        text-decoration: none;
+                        padding: 8px;
+                        color: #fff;
+                        font-weight: bold;
+                        border-radius: 25px;
+                        border: 2px solid #fff;
+                    }
+                    .back-button:hover {
+                        background-color: white;
+                        text-decoration: none;
+                        color: #62ea39;
+                        border: 2px solid #62ea39;
+                    }
+                </style>
+                <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
+                <script type="text/javascript">
+                    const button = document.querySelector('.back-button');
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        window.location.href = 'https://dedel.pubhe.com/public/dashboard';
+                    });
+                </script>
+                """
+
+    # Tampilkan HTML di Streamlit
     st.markdown(back_button_html, unsafe_allow_html=True)
 
     @st.cache_data
@@ -143,25 +152,34 @@ if selected == "Pengenalan":
 
 if selected == "Prediksi":
     back_button_html = """
-        <style>
-            .back-button {
-                background-color: #62ea39;
-                text-decoration:None;
-                padding:8px;
-                color: #fff;
-                font-weight: bold;
-                border-radius: 25px;
-                border: 2px solid #fff;
-            }
-            .back-button:hover {
-                background-color: white;
-                text-decoration: None;
-                color: #62ea39;
-                border: 2px solid #62ea39;
-            }
-        </style>
-        <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
-        """
+                <style>
+                    .back-button {
+                        background-color: #62ea39;
+                        text-decoration: none;
+                        padding: 8px;
+                        color: #fff;
+                        font-weight: bold;
+                        border-radius: 25px;
+                        border: 2px solid #fff;
+                    }
+                    .back-button:hover {
+                        background-color: white;
+                        text-decoration: none;
+                        color: #62ea39;
+                        border: 2px solid #62ea39;
+                    }
+                </style>
+                <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
+                <script type="text/javascript">
+                    const button = document.querySelector('.back-button');
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        window.location.href = 'https://dedel.pubhe.com/public/dashboard';
+                    });
+                </script>
+                """
+
+    # Tampilkan HTML di Streamlit
     st.markdown(back_button_html, unsafe_allow_html=True)
 
     # Ekstrak file model dari ZIP
@@ -267,25 +285,34 @@ if selected == "Prediksi":
 
 if selected == "Panduan MPASI":
     back_button_html = """
-            <style>
-                .back-button {
-                    background-color: #62ea39;
-                    text-decoration:None;
-                    padding:8px;
-                    color: #fff;
-                    font-weight: bold;
-                    border-radius: 25px;
-                    border: 2px solid #fff;
-                }
-                .back-button:hover {
-                    background-color: white;
-                    text-decoration: None;
-                    color: #62ea39;
-                    border: 2px solid #62ea39;
-                }
-            </style>
-            <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
-            """
+                <style>
+                    .back-button {
+                        background-color: #62ea39;
+                        text-decoration: none;
+                        padding: 8px;
+                        color: #fff;
+                        font-weight: bold;
+                        border-radius: 25px;
+                        border: 2px solid #fff;
+                    }
+                    .back-button:hover {
+                        background-color: white;
+                        text-decoration: none;
+                        color: #62ea39;
+                        border: 2px solid #62ea39;
+                    }
+                </style>
+                <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
+                <script type="text/javascript">
+                    const button = document.querySelector('.back-button');
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        window.location.href = 'https://dedel.pubhe.com/public/dashboard';
+                    });
+                </script>
+                """
+
+    # Tampilkan HTML di Streamlit
     st.markdown(back_button_html, unsafe_allow_html=True)
 
     st.title("Panduan MPASI 📖")
