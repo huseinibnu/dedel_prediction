@@ -47,9 +47,28 @@ with st.sidebar:
     )
 
 if selected == "Pengenalan":
-    if st.button("🔙 Back"):
-        import webbrowser
-        webbrowser.open("https://dedel.pubhe.com/public/dashboard")
+    back_button_html = """
+            <style>
+                .back-button {
+                    background-color: #62ea39;
+                    text-decoration:None;
+                    padding:8px;
+                    color: #fff;
+                    font-weight: bold;
+                    border-radius: 25px;
+                    border: 2px solid #fff;
+                }
+                .back-button:hover {
+                    background-color: white;
+                    text-decoration: None;
+                    color: #62ea39;
+                    border: 2px solid #62ea39;
+                }
+            </style>
+            <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
+            """
+    st.markdown(back_button_html, unsafe_allow_html=True)
+
     @st.cache_data
     def get_data():
         df = pd.read_csv("data_balita.csv")
@@ -123,9 +142,27 @@ if selected == "Pengenalan":
     right_column.plotly_chart(fig_status_gizi_distribution, use_container_width=True)
 
 if selected == "Prediksi":
-    if st.button("🔙 Back"):
-        import webbrowser
-        webbrowser.open("https://dedel.pubhe.com/public/dashboard")
+    back_button_html = """
+        <style>
+            .back-button {
+                background-color: #62ea39;
+                text-decoration:None;
+                padding:8px;
+                color: #fff;
+                font-weight: bold;
+                border-radius: 25px;
+                border: 2px solid #fff;
+            }
+            .back-button:hover {
+                background-color: white;
+                text-decoration: None;
+                color: #62ea39;
+                border: 2px solid #62ea39;
+            }
+        </style>
+        <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
+        """
+    st.markdown(back_button_html, unsafe_allow_html=True)
 
     # Ekstrak file model dari ZIP
     with zipfile.ZipFile('model_stunting.zip', 'r') as zipf:
@@ -180,47 +217,47 @@ if selected == "Prediksi":
         if diab_prediction[0] == 0:
             diab_diagnosis = (
                 "<hr><div style='background-color: rgba(255, 0, 0, 0.2); border-radius: 10px; padding: 10px;'>"
-                "<p style='color:black;'>Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:red;'><b>Severely Stunted (Sangat Pendek)</b></span>. Kami memahami bahwa sebagai orang tua, Anda pasti telah melakukan yang terbaik. Untuk langkah selanjutnya, berikut saran kami: "
+                "<p style='color:black; font-size:18px; text-align:justify;'>Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:red;'><b>Severely Stunted (Sangat Pendek)</b></span>. Kami memahami bahwa sebagai orang tua, Anda pasti telah melakukan yang terbaik. Untuk langkah selanjutnya, berikut saran kami: "
                 "<br><br>1. <span style='color:red;'><b>Konsultasi</b></span>: Silakan berkonsultasi dengan kader posyandu atau tenaga kesehatan untuk mendapatkan bantuan lebih lanjut. "
                 "<br>2. <span style='color:red;'><b>MPASI</b></span>: Jika anak sudah bisa mengonsumsi <span style='color:red;'><b>MPASI</b></span>, kunjungi bagian 'Panduan MPASI' di sebelah kiri untuk panduan makanan tambahan yang bergizi. "
                 "<br><br>Kami berharap, dengan langkah-langkah ini, tinggi badan anak Anda dapat mencapai kategori normal di waktu yang akan datang.</p></div>")
 
             height_prediction = (
                 f"<hr><div style='background-color: rgba(255, 0, 0, 0.2); border-radius: 10px; padding: 10px;'> "
-                f"<p style='color:red;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
+                f"<p style='color:red; font-size:18px; text-align:justify;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
 
         elif diab_prediction[0] == 1:
             diab_diagnosis = (
                 "<hr><div style='background-color: rgba(255, 0, 0, 0.2); border-radius: 10px; padding: 10px;'>"
-                "<p style='color:black;'>Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:red;'><b>Stunted (Pendek)</b></span>. Kami memahami bahwa sebagai orang tua, Anda pasti telah melakukan yang terbaik. Untuk langkah selanjutnya, berikut saran kami: "
+                "<p style='color:black; font-size:18px; text-align:justify;'>Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:red;'><b>Stunted (Pendek)</b></span>. Kami memahami bahwa sebagai orang tua, Anda pasti telah melakukan yang terbaik. Untuk langkah selanjutnya, berikut saran kami: "
                 "<br><br>1. <span style='color:red;'><b>Konsultasi</b></span>: Silakan berkonsultasi dengan kader posyandu atau tenaga kesehatan untuk mendapatkan bantuan lebih lanjut. "
                 "<br>2. <span style='color:red;'><b>MPASI</b></span>: Jika anak sudah bisa mengonsumsi <span style='color:red;'><b>MPASI</b></span>, kunjungi bagian 'Panduan MPASI' di sebelah kiri untuk panduan makanan tambahan yang bergizi. "
                 "<br><br>Kami berharap, dengan langkah-langkah ini, tinggi badan anak Anda dapat mencapai kategori normal di waktu yang akan datang.</p></div>")
 
             height_prediction = (
                 f"<hr><div style='background-color: rgba(255, 0, 0, 0.2); border-radius: 10px; padding: 10px;'> "
-                f"<p style='color:red;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
+                f"<p style='color:red; font-size:18px; text-align:justify;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
 
         elif diab_prediction[0] == 2:
             diab_diagnosis = (
                 "<hr><div style='background-color: rgba(0, 255, 0, 0.2); border-radius: 10px; padding: 10px;'>"
-                "<p style='color:black;'><span style='color:green;'><b>Selamat!</b></span> Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:green;'><b>Normal</b></span>. Tetaplah memberikan yang terbaik untuk pertumbuhan dan perkembangan anak Anda."
+                "<p style='color:black; font-size:18px; text-align:justify;'><span style='color:green;'><b>Selamat!</b></span> Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:green;'><b>Normal</b></span>. Tetaplah memberikan yang terbaik untuk pertumbuhan dan perkembangan anak Anda."
                 "<br><br>Jika Anda memerlukan panduan tentang <span style='color:green;'><b>MPASI</b></span>, silakan kunjungi bagian 'Panduan MPASI' di sebelah kiri. Kami berharap tinggi badan anak Anda dapat terus meningkat di bulan yang akan datang.</p></div>")
 
             height_prediction = (
                 f"<hr><div style='background-color: rgba(0, 255, 0, 0.2); border-radius: 10px; padding: 10px;'> "
-                f"<p style='color:green;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
+                f"<p style='color:green; font-size:18px; text-align:justify;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
 
         else:
             diab_diagnosis = (
                 "<hr><div style='background-color: rgba(0, 255, 0, 0.2); border-radius: 10px; padding: 10px;'>"
-                "<p style='color:black;'><span style='color:green;'><b>Selamat!</b></span> Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:green;'><b>Tinggi</b></span>. Ini menunjukkan bahwa pertumbuhan anak Anda sangat baik."
+                "<p style='color:black; font-size:18px; text-align:justify;'><span style='color:green;'><b>Selamat!</b></span> Berdasarkan data yang Anda masukkan, anak Anda tergolong <span style='color:green;'><b>Tinggi</b></span>. Ini menunjukkan bahwa pertumbuhan anak Anda sangat baik."
                 "<br><br>Tetaplah memberikan yang terbaik untuk pertumbuhan dan perkembangan anak Anda. Pastikan anak mendapatkan pola makan yang seimbang dan cukup aktivitas fisik untuk menjaga kesehatannya."
                 "<br><br>Jika Anda memerlukan panduan tentang <span style='color:green;'><a href='#mpasi'><b>MPASI</b></a></span> atau tips lainnya, silakan kunjungi bagian 'Panduan MPASI' di sebelah kiri.</p></div>")
 
             height_prediction = (
                 f"<hr><div style='background-color: rgba(0, 255, 0, 0.2); border-radius: 10px; padding: 10px;'> "
-                f"<p style='color:green;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
+                f"<p style='color:green; font-size:18px; text-align:justify;'>Prediksi <b>tinggi badan</b> si bayi pada usia <b>60 bulan</b> atau <b>5 tahun</b> yaitu <b>{hasil_prediksi:.2f}</b> cm.</p></div>")
 
         # Tampilkan hasil klasifikasi
         st.markdown(diab_diagnosis, unsafe_allow_html=True)
@@ -229,18 +266,40 @@ if selected == "Prediksi":
         st.markdown(height_prediction, unsafe_allow_html=True)
 
 if selected == "Panduan MPASI":
+    back_button_html = """
+            <style>
+                .back-button {
+                    background-color: #62ea39;
+                    text-decoration:None;
+                    padding:8px;
+                    color: #fff;
+                    font-weight: bold;
+                    border-radius: 25px;
+                    border: 2px solid #fff;
+                }
+                .back-button:hover {
+                    background-color: white;
+                    text-decoration: None;
+                    color: #62ea39;
+                    border: 2px solid #62ea39;
+                }
+            </style>
+            <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_self">🔙 Kembali</a>
+            """
+    st.markdown(back_button_html, unsafe_allow_html=True)
+
     st.title("Panduan MPASI 📖")
     st.markdown("""
-            <div style='color: black;'>
+            <div style='color: black; font-size:18px; text-align:justify;'>
                 <div style='background-color: #d4edda; padding: 1rem; border-radius: 0.5rem;'>
                     Peran ibu sangat penting dalam mencegah <b>stunting</b> sejak kehamilan dengan memberikan stimulasi yang tepat selama <b>masa emas (0-3 tahun)</b>. <b>Stunting</b> ditandai dengan pertumbuhan yang tidak sesuai standar <b>WHO</b>. Selain ibu, dukungan keluarga dan masyarakat juga diperlukan untuk mengurangi risiko <b>stunting</b> dan mewujudkan Generasi Emas 2045. Pemberian <b>MPASI</b> yang tepat merupakan salah satu metode pencegahan <b>stunting</b> pada bayi berusia 6 bulan keatas. Berikut kami paparkan informasi terkait <b>MPASI</b>.
                 </div>
-            </div>
+            </div><br>
         """, unsafe_allow_html=True)
 
     st.header("Tahapan Tekstur MPASI\n", divider="green")
     st.markdown("""
-            <div style='color: black;'>
+            <div style='color: black; font-size:18px; text-align:justify;'>
                 <div style='background-color: #d4edda; padding: 1rem; border-radius: 0.5rem;'>
                     Pemberian MPASI tidak hanya untuk membuat bayi kenyang tetapi juga untuk melatih kemampuan mengunyah dan menelan, yang juga penting untuk perkembangan kemampuan berbicara. Tahapan tekstur MPASI sesuai usia bayi adalah:
                     <br><br>1. <b>Bubur Lumat (6 bulan)</b>: Pada tahap awal, bayi memerlukan bubur lumat yang bisa dihaluskan dengan blender atau saringan. Berikan 2-3 sendok makan MPASI ini dua kali sehari.
@@ -249,12 +308,12 @@ if selected == "Panduan MPASI":
                     <br><br>4. <b>Tekstur Kasar (di atas 12 bulan)</b>: Bayi mulai bisa makan berbagai macam tekstur makanan dan dapat diberikan menu keluarga 3-4 kali sehari. Makanan selingan seperti pancake, roti, puding, telur rebus, atau buah-buahan bisa diberikan 1-2 kali sehari.
                     <br><br>Penting untuk memperhatikan tekstur MPASI sesuai usia bayi untuk mencegah risiko tersedak. Pastikan bahan makanan dan peralatan bersih, dan masak bahan makanan hingga matang. Cuci tangan sebelum menyiapkan dan memberikan makanan pada bayi. Jika ada pertanyaan tentang MPASI, konsultasikan dengan dokter.
                 </div>
-            </div>
+            </div><br>
         """, unsafe_allow_html=True)
 
     st.header("Bahan Makanan Sehat untuk MPASI\n", divider="green")
     st.markdown("""
-            <div style='color: black;'>
+            <div style='color: black; font-size:18px; text-align:justify;'>
                 <div style='background-color: #d4edda; padding: 1rem; border-radius: 0.5rem;'>
                     Berbagai makanan segar dan bergizi dapat mendukung tumbuh kembang bayi, di antaranya:
                     <br><br>1. <b>Alpukat 🥑</b>: Kaya <b>asam lemak omega-3</b>, baik untuk perkembangan otak. Bisa dihaluskan dan dicampur dengan ASI atau susu formula.
@@ -267,24 +326,24 @@ if selected == "Panduan MPASI":
                     <br><br>8. <b>Ikan 🐟</b>: Kaya <b>protein, mineral, vitamin</b>, dan <b>asam lemak omega-3</b>. Baik untuk perkembangan otak. Pastikan bebas duri dan dimasak matang.
                     <br><br>Makanan seperti ubi, alpukat, dan brokoli bisa diberikan sebagai finger food bagi bayi usia 9 bulan ke atas. Hindari makanan yang berisiko tersedak seperti permen dan anggur. Perkenalkan makanan baru secara bertahap. Jika bayi tidak menyukai makanan baru, coba tawarkan lagi beberapa hari kemudian tanpa memaksa.
                 </div>
-            </div>
+            </div><br>
         """, unsafe_allow_html=True)
 
     st.markdown("""
-            <div style='color: black;'>
+            <div style='color: black; font-size:18px; text-align:justify;'>
                 <div style='background-color: #d4edda; padding: 1rem; border-radius: 0.5rem;'>
                     Untuk resep MPASI dengan bahan-bahan lokal, dapat anda akses pada tombol berikut:
                 </div>
-            </div>
+            </div><br>
         """, unsafe_allow_html=True)
 
     download_button = st.markdown(
         """
-        <a href="https://ayosehat.kemkes.go.id/download/dp/d8a32723535961f3f2a6e44f0f8ba915.pdf" target="_blank">
-            <button style="font-size:20px;padding:8px;border-radius:3px;border:none;background-color:#62ea39;color:white;">
+        <a href="https://ayosehat.kemkes.go.id/download/dp/d8a32723535961f3f2a6e44f0f8ba915.pdf" target="_self">
+            <button style="font-size:20px;padding:8px;border-radius:25px;border:none;background-color:#62ea39;color:white;">
                 &#x1F4E5; Download
             </button>
-        </a>
+        </a><br><br>
         """,
         unsafe_allow_html=True
     )
