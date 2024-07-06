@@ -65,7 +65,7 @@ if selected == "Pengenalan":
                     border: 2px solid #62ea39;
                 }
             </style>
-            <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_top">🔙 Kembali</a>
+            <a class="back-button" href="https://dedel.pubhe.com/public/dashboard" target="_blank">🔙 Kembali</a>
             """
     st.markdown(back_button_html, unsafe_allow_html=True)
 
