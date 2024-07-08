@@ -171,7 +171,7 @@ if selected == "Prediksi":
     # Load model
     stunting_model = joblib.load('model_stunting.joblib')
 
-    st.title('Aplikasi Prediksi Status Gizi❓')
+    st.title('Prediksi Status Gizi 📏')
 
     tinggi = st.text_input('**Masukkan panjang badan anak anda (cm) :**')
     umur = st.text_input('**Masukkan umur anak anda (bulan) :**')
