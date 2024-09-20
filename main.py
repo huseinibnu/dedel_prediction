@@ -11,25 +11,18 @@ st.set_page_config(
     layout="wide"
 )
 
-# CSS untuk menambahkan gaya pada tombol tertentu
-button_style = """
+# Tambahkan CSS untuk mengubah warna background sidebar menjadi #62ea39
+st.markdown("""
     <style>
-    .stButton > button {
-        background-color: #62ea39;
-        color: white;
-        font-weight: bold;
-        border-radius: 25px;
-    }
-    .stButton > button:hover {
-        background-color: white;
-        color: #62ea39;
-        border: 2px solid #62ea39;
-    }
+        /* Mengubah warna latar belakang sidebar */
+        [data-testid="stSidebar"] {
+            background-color: #62ea39;
+        }
     </style>
-"""
-st.markdown(button_style, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-# Horizontal Menu
+
+# Sidebar menu
 with st.sidebar:
     selected = option_menu(
         menu_title=None,
@@ -38,10 +31,10 @@ with st.sidebar:
         menu_icon="cast",
         default_index=1,
         styles={
-            "container": {"padding": "0!important", "background-color": "#62ea39"},
+            "container": {"padding": "0!important", "background-color": "#62ea39"},  # Background hijau
             "icon": {"color": "#000", "font-size": "22px"},
             "nav-link": {"color": "#000", "font-size": "22px", "text-align": "left", "margin": "0px",
-                         "--hover-color": "#62ea39"},
+                         "--hover-color": "#62ea39"},  # Warna hover hijau
             "nav-link-selected": {"color": "#62ea39", "background-color": "#f4f6fa"},
         }
     )
@@ -172,6 +165,58 @@ if selected == "Prediksi":
     stunting_model = joblib.load('model_stunting.joblib')
 
     st.title('Prediksi Status Gizi 📏')
+
+    # Gaya CSS yang diterapkan pada input, selectbox, dan tombol
+    custom_css = """
+        <style>
+        /* Gaya input teks */
+        input[type="text"] {
+            background-color: #62ea39 !important;
+            color: #fff !important;
+            border: 2px solid #62ea39 !important;
+            border-radius: 8px !important;
+        }
+
+        input[type="text"]:focus {
+            background-color: white !important;
+            color: #62ea39 !important;
+            border: 2px solid #62ea39 !important;
+        }
+
+        /* Gaya selectbox */
+        .stSelectbox select {
+            background-color: #62ea39 !important;
+            color: #fff !important;
+            border-radius: 8px !important;
+            padding: 8px !important;
+        }
+
+        .stSelectbox select:focus {
+            background-color: #62ea39 !important;
+            color: #62ea39 !important;
+            border: 2px solid #62ea39 !important;
+        }
+
+        /* Gaya tombol */
+        .stButton > button {
+            background-color: #62ea39 !important;
+            color: white !important;
+            border: 2px solid #62ea39 !important;
+            padding: 10px 16px !important;
+            font-weight: bold !important;
+            border-radius: 25px !important;
+        }
+
+        .stButton > button:hover {
+            background-color: white !important;
+            color: #62ea39 !important;
+            border: 2px solid #62ea39 !important;
+        }
+        </style>
+        """
+
+    # Terapkan CSS dengan markdown
+    st.markdown(custom_css, unsafe_allow_html=True)
 
     tinggi = st.text_input('**Masukkan panjang badan anak anda (cm) :**')
     umur = st.text_input('**Masukkan umur anak anda (bulan) :**')
